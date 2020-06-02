@@ -24,3 +24,7 @@ Basics 
 
 Common Issues 
 ==============
+
+|S.No.|Issue|Details|Fix|Reference|
+|--- |--- |--- |--- |--- |
+|1|Spark Streaming failed executor tasks|Spark DAGScheduler builds stages of task and submit task to TaskScheduler to run the task. TaskScheduler launch the task on executors and re-run the failed task into different executors and reports to DAGScheduler. You can control the number of times, task to be retried before it gives up using spark.task.maxFailures.|For long-running jobs you could consider to boost maximum number of task failures before giving up the job. By default tasks will be retried 4 times and then job fails.spark.task.maxFailures=8|https://stackoverflow.com/questions/40195309/spark-streaming-failed-executor-tasks http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/|
